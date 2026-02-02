@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken'
 import UserData from '../models/auth.model.js';
 const isAuthenticated = async (req, res, next) => {
     try {
+        // getting the token from the cookies
         const token = req.cookies.token;
         if (!token) {
             return res.status(401).json({
@@ -9,6 +10,8 @@ const isAuthenticated = async (req, res, next) => {
                 success: false,
             })
         }
+        
+        // decoding the JSON web token
         const decoded = await jwt.verify(token, process.env.SECRET_KEY)
         if (!decoded) {
             return res.status(401).json({
@@ -16,7 +19,8 @@ const isAuthenticated = async (req, res, next) => {
                 success: false,
             })
         }
-
+        
+        // finding user with the help of the token data
         const user = await UserData.findById(decoded.userId).select('-Password');
         if(!user){
             return res.status(401).json({
