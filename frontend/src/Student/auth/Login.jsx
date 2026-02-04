@@ -3,6 +3,7 @@ import { Loader } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
 
+// main login section
 const Login = () => {
   const [input, setinput] = useState({
     loginCredential: '',
@@ -13,10 +14,12 @@ const Login = () => {
 
   const { loading, login } = useAuthStore();
 
+  // change input 
   const changeEventHandler = (e) => {
     setinput({ ...input, [e.target.name]: e.target.value })
   }
 
+  // handle submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -27,8 +30,8 @@ const Login = () => {
     } catch (error) {
 
     }
-
   }
+  
   return (
     <div>
       <div className='flex items-center justify-center p-5 mx-auto max-w-7xl'>
@@ -55,4 +58,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;
