@@ -8,6 +8,6 @@ const router = express.Router();
 router.post('/signup',singleUpload, Signup);      //calling signup controller
 router.post('/login',Login);        //calling Login controller
 router.get('/logout',Logout);      //calling Logout controller
-router.get('/check-auth',isAuthenticated, checkAuth)
+router.get('/check-auth',isAuthenticated, checkAuth);    // check auth controller
 
 export default router;
