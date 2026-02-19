@@ -1,4 +1,4 @@
-import express from 'express'
+import express from 'express';
 
 import { deleteQuestion, getAllQuestions, getQuestionforStudent, postQuestion } from '../controllers/questions.controller.js';
 import isAuthenticated from '../middlewares/isAuthenticated.js';
